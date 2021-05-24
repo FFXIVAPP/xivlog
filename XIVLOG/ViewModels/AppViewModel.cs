@@ -15,6 +15,8 @@ namespace XIVLOG.ViewModels {
     using System.Globalization;
     using System.IO;
 
+    using Sharlayan.Core;
+
     using XIVLOG.Models;
 
     public class AppViewModel : PropertyChangedBase {
@@ -31,6 +33,8 @@ namespace XIVLOG.ViewModels {
         private Dictionary<string, string> _locale;
 
         private string _logsPath;
+
+        private List<string> _savedLogsDirectoryList;
 
         private string _settingsPath;
 
@@ -140,6 +144,21 @@ namespace XIVLOG.ViewModels {
             }
         }
 
+        public List<string> SavedLogsDirectoryList {
+            get => this._savedLogsDirectoryList ??= new List<string>();
+            set {
+                List<string> directoryPaths = value;
+                foreach (string directoryPath in directoryPaths) {
+                    string path = Path.Combine(this.LogsPath, directoryPath);
+                    if (!Directory.Exists(path)) {
+                        Directory.CreateDirectory(path);
+                    }
+                }
+
+                this.SetProperty(ref this._savedLogsDirectoryList, value);
+            }
+        }
+
         public string SettingsPath {
             get => this._settingsPath;
             set {
@@ -150,5 +169,7 @@ namespace XIVLOG.ViewModels {
                 this.SetProperty(ref this._settingsPath, value);
             }
         }
+
+        public List<ChatLogItem> ChatHistory { get; set; } = new List<ChatLogItem>();
     }
 }

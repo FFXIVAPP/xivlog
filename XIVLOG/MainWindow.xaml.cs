@@ -34,8 +34,11 @@ namespace XIVLOG {
             }
 
             Settings.Default.Save();
+
             SettingsHelper.SaveChatCodes();
             SettingsHelper.SaveChatTabs();
+            SavedLogsHelper.SaveCurrentLog();
+
             Environment.Exit(0);
         }
 

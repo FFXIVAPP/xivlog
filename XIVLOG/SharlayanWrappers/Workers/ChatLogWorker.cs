@@ -18,6 +18,7 @@ namespace XIVLOG.SharlayanWrappers.Workers {
     using Sharlayan.Models.ReadResults;
 
     using XIVLOG.Properties;
+    using XIVLOG.ViewModels;
 
     internal class ChatLogWorker : PropertyChangedBase, IDisposable {
         private readonly MemoryHandler _memoryHandler;
@@ -76,6 +77,7 @@ namespace XIVLOG.SharlayanWrappers.Workers {
                     while (!result.ChatLogItems.IsEmpty) {
                         if (result.ChatLogItems.TryDequeue(out ChatLogItem chatLogItem)) {
                             EventHost.Instance.RaiseNewChatLogItemEvent(this._memoryHandler, chatLogItem);
+                            AppViewModel.Instance.ChatHistory.Add(chatLogItem);
                         }
                     }
 

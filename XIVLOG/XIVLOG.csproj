@@ -11,6 +11,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Resources\ChatHistory.xml" />
 		<None Remove="Resources\ChatTabs.xml" />
 		<None Remove="XIVLOG.exe.nlog" />
 		<None Remove="Resources\blackcat.svg" />
@@ -48,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Resource Include="Resources\ChatHistory.xml" />
 	  <Resource Include="Resources\ChatTabs.xml" />
 	  <Resource Include="Resources\Contact.png" />
 	  <Resource Include="Resources\logo.ico" />
