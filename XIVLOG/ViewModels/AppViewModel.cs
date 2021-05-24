@@ -10,6 +10,7 @@
 
 namespace XIVLOG.ViewModels {
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
@@ -170,6 +171,6 @@ namespace XIVLOG.ViewModels {
             }
         }
 
-        public List<ChatLogItem> ChatHistory { get; set; } = new List<ChatLogItem>();
+        public ConcurrentDictionary<string, List<ChatLogItem>> ChatHistory { get; } = new ConcurrentDictionary<string, List<ChatLogItem>>();
     }
 }
