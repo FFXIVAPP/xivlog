@@ -15,6 +15,7 @@ namespace XIVLOG.Utilities {
 
     using Sharlayan.Core;
 
+    using XIVLOG.Models;
     using XIVLOG.Properties;
     using XIVLOG.Translation;
 
@@ -26,26 +27,42 @@ namespace XIVLOG.Utilities {
         private static GoogleTranslateProvider _googleTranslateProvider;
 
         public static TranslationResult GetAutomaticResult(ChatLogItem chatLogItem) {
-            Logging.Log(Logger, "Begin Translation");
-            Logging.Log(Logger, $"Player [{chatLogItem.PlayerName}] said [{chatLogItem.Message}]");
+            try {
+                Logging.Log(Logger, "Begin Translation");
+                Logging.Log(Logger, $"Player [{chatLogItem.PlayerName}] said [{chatLogItem.Message}]");
 
-            TranslationResult result = TranslateText(chatLogItem);
+                TranslationResult result = TranslateText(chatLogItem);
 
-            Logging.Log(Logger, $"Translation Result: {result?.Translated}");
+                Logging.Log(Logger, $"Translation Result: {result?.Translated}");
 
-            if (result is not null) {
+                if (result is null) {
+                    return null;
+                }
+
                 if (result.Translated.Length <= 0 || string.Equals(chatLogItem.Message, result.Translated, StringComparison.InvariantCultureIgnoreCase)) {
                     return new TranslationResult {
                         Original = chatLogItem.Message,
                     };
                 }
+
+                return result;
+            }
+            catch (Exception ex) {
+                Logging.Log(Logger, new LogItem(ex, true));
             }
 
-            return result;
+            return null;
         }
 
         public static TranslationResult GetManualResult(string text, string fromLanguage, string toLanguage) {
-            return GetTranslationProvider().TranslateText(text, fromLanguage, toLanguage, false);
+            try {
+                return GetTranslationProvider().TranslateText(text, fromLanguage, toLanguage, false);
+            }
+            catch (Exception ex) {
+                Logging.Log(Logger, new LogItem(ex, true));
+            }
+
+            return null;
         }
 
         private static ITranslationProvider GetTranslationProvider() {
