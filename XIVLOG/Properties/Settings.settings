@@ -1,0 +1,161 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="XIVLOG.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Width" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1050</Value>
+    </Setting>
+    <Setting Name="Height" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">660</Value>
+    </Setting>
+    <Setting Name="GameLanguages" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;English&lt;/string&gt;
+  &lt;string&gt;Japanese&lt;/string&gt;
+  &lt;string&gt;French&lt;/string&gt;
+  &lt;string&gt;German&lt;/string&gt;
+  &lt;string&gt;Chinese&lt;/string&gt;
+  &lt;string&gt;Korean&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UseLocalJSONCache" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="InterfaceLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">English</Value>
+    </Setting>
+    <Setting Name="DarkMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UserThemePrimary" Type="System.String" Scope="User">
+      <Value Profile="(Default)">deeppurple</Value>
+    </Setting>
+    <Setting Name="UserThemeAccent" Type="System.String" Scope="User">
+      <Value Profile="(Default)">purple</Value>
+    </Setting>
+    <Setting Name="ActionWorkerTiming" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="ActorWorkerTiming" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="ChatLogWorkerTiming" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="CurrentPlayerWorkerTiming" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="InventoryWorkerTiming" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="JobResourceWorkerTiming" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="PartyWorkerTiming" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="TargetWorkerTiming" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="Culture" Type="System.Globalization.CultureInfo" Scope="User">
+      <Value Profile="(Default)">(Default)</Value>
+    </Setting>
+    <Setting Name="CultureSet" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Left" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="Top" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="CognitiveServiceKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CognitiveServiceRegion" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="GoogleServiceKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="EnableTranslate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ManualTranslateTo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Japanese</Value>
+    </Setting>
+    <Setting Name="TranslateLanguages" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Albanian&lt;/string&gt;
+  &lt;string&gt;Arabic&lt;/string&gt;
+  &lt;string&gt;Bulgarian&lt;/string&gt;
+  &lt;string&gt;Catalan&lt;/string&gt;
+  &lt;string&gt;Chinese (Simplified)&lt;/string&gt;
+  &lt;string&gt;Chinese (Traditional)&lt;/string&gt;
+  &lt;string&gt;Croatian&lt;/string&gt;
+  &lt;string&gt;Czech&lt;/string&gt;
+  &lt;string&gt;Danish&lt;/string&gt;
+  &lt;string&gt;Dutch&lt;/string&gt;
+  &lt;string&gt;English&lt;/string&gt;
+  &lt;string&gt;Estonian&lt;/string&gt;
+  &lt;string&gt;Filipino&lt;/string&gt;
+  &lt;string&gt;Finnish&lt;/string&gt;
+  &lt;string&gt;French&lt;/string&gt;
+  &lt;string&gt;Galician&lt;/string&gt;
+  &lt;string&gt;German&lt;/string&gt;
+  &lt;string&gt;Greek&lt;/string&gt;
+  &lt;string&gt;Hebrew&lt;/string&gt;
+  &lt;string&gt;Hindi&lt;/string&gt;
+  &lt;string&gt;Hungarian&lt;/string&gt;
+  &lt;string&gt;Indonesian&lt;/string&gt;
+  &lt;string&gt;Italian&lt;/string&gt;
+  &lt;string&gt;Japanese&lt;/string&gt;
+  &lt;string&gt;Korean&lt;/string&gt;
+  &lt;string&gt;Latvian&lt;/string&gt;
+  &lt;string&gt;Lithuanian&lt;/string&gt;
+  &lt;string&gt;Maltese&lt;/string&gt;
+  &lt;string&gt;Norwegian&lt;/string&gt;
+  &lt;string&gt;Polish&lt;/string&gt;
+  &lt;string&gt;Portuguese&lt;/string&gt;
+  &lt;string&gt;Romanian&lt;/string&gt;
+  &lt;string&gt;Russian&lt;/string&gt;
+  &lt;string&gt;Serbian&lt;/string&gt;
+  &lt;string&gt;Slovak&lt;/string&gt;
+  &lt;string&gt;Slovenian&lt;/string&gt;
+  &lt;string&gt;Spanish&lt;/string&gt;
+  &lt;string&gt;Swedish&lt;/string&gt;
+  &lt;string&gt;Thai&lt;/string&gt;
+  &lt;string&gt;Turkish&lt;/string&gt;
+  &lt;string&gt;Ukrainian&lt;/string&gt;
+  &lt;string&gt;Vietnamese&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="TranslationProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Google</Value>
+    </Setting>
+    <Setting Name="TranslationProviders" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Google&lt;/string&gt;
+  &lt;string&gt;Cognitive&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="TranslateInternationalOnly" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="TranslateToLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">English</Value>
+    </Setting>
+    <Setting Name="UpgradeSettings" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="TranslateFromLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Japanese</Value>
+    </Setting>
+    <Setting Name="ManualTranslateFrom" Type="System.String" Scope="User">
+      <Value Profile="(Default)">English</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

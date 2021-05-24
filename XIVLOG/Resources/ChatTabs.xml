@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Tabs>
+	<Tab Key="FC">
+		<ChatCodes>0018</ChatCodes>
+		<RegEx>*</RegEx>
+	</Tab>
+	<Tab Key="Tell">
+		<ChatCodes>000C,000D</ChatCodes>
+		<RegEx>*</RegEx>
+	</Tab>
+	<Tab Key="Say">
+		<ChatCodes>000A</ChatCodes>
+		<RegEx>*</RegEx>
+	</Tab>
+	<Tab Key="Party">
+		<ChatCodes>000E</ChatCodes>
+		<RegEx>*</RegEx>
+	</Tab>
+	<Tab Key="Shout">
+		<ChatCodes>000B</ChatCodes>
+		<RegEx>*</RegEx>
+	</Tab>
+</Tabs>

@@ -1,0 +1,126 @@
+﻿<UserControl
+    x:Class="XIVLOG.Controls.TranslationSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:XIVLOG.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:XIVLOG.Controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:properties="clr-namespace:XIVLOG.Properties"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:RadioButtonIsCheckedConverter x:Key="RadioButtonIsCheckedConverter" />
+        <Style BasedOn="{StaticResource MaterialDesignTextBox}" TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="8,0,8,16" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <materialDesign:Card
+                Margin="0,2"
+                Padding="2"
+                Background="{DynamicResource PrimaryHueMidBrush}"
+                Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                <StackPanel>
+                    <TextBlock
+                        Margin="8"
+                        FontSize="16"
+                        Text="{Binding Locale[TranslateSettingsTabItem_GeneralSettingsText], Source={StaticResource AppViewModel}}" />
+                </StackPanel>
+            </materialDesign:Card>
+            <TextBlock
+                Margin="0,8"
+                Text="{Binding Locale[TranslateSettingsTabItem_GeneralSettingsExtendedText], Source={StaticResource AppViewModel}}"
+                TextWrapping="Wrap" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <CheckBox
+                    Grid.Column="0"
+                    Margin="0,0,8,8"
+                    Content="{Binding Locale[TranslateSettingsTabItem_EnableTranslateText], Source={StaticResource AppViewModel}}"
+                    Foreground="{DynamicResource MaterialDesignBody}"
+                    IsChecked="{Binding EnableTranslate, Mode=TwoWay, Source={x:Static properties:Settings.Default}}"
+                    Style="{StaticResource MaterialDesignDarkCheckBox}" />
+                <CheckBox
+                    Grid.Column="1"
+                    Margin="8,0,8,8"
+                    Content="{Binding Locale[TranslateSettingsTabItem_InternationalOnly], Source={StaticResource AppViewModel}}"
+                    Foreground="{DynamicResource MaterialDesignBody}"
+                    IsChecked="{Binding TranslateInternationalOnly, Mode=TwoWay, Source={x:Static properties:Settings.Default}}"
+                    Style="{StaticResource MaterialDesignDarkCheckBox}" />
+                <ComboBox
+                    Grid.Column="2"
+                    Width="200"
+                    Margin="8,0,0,24"
+                    materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_AutomaticTranslationToText], Source={StaticResource AppViewModel}}"
+                    ItemsSource="{Binding TranslateLanguages, Source={x:Static properties:Settings.Default}}"
+                    SelectedValue="{Binding TranslateToLanguage, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+                <ComboBox
+                    Grid.Column="3"
+                    Width="200"
+                    Margin="8,0,0,24"
+                    materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_AutomaticTranslationFromText], Source={StaticResource AppViewModel}}"
+                    ItemsSource="{Binding TranslateLanguages, Source={x:Static properties:Settings.Default}}"
+                    SelectedValue="{Binding TranslateFromLanguage, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+            </Grid>
+            <materialDesign:Card
+                Margin="0,2"
+                Padding="2"
+                Background="{DynamicResource PrimaryHueMidBrush}"
+                Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                <StackPanel>
+                    <TextBlock
+                        Margin="8"
+                        FontSize="16"
+                        Text="{Binding Locale[TranslateSettingsTabItem_ProviderSettingsText], Source={StaticResource AppViewModel}}" />
+                </StackPanel>
+            </materialDesign:Card>
+            <StackPanel Margin="0,2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <StackPanel Margin="4" Orientation="Horizontal">
+                            <RadioButton
+                                Margin="4"
+                                Content="Google"
+                                IsChecked="{Binding Path=TranslationProvider, Source={x:Static properties:Settings.Default}, Mode=TwoWay, Converter={StaticResource RadioButtonIsCheckedConverter}, ConverterParameter='Google'}"
+                                Style="{StaticResource MaterialDesignTabRadioButton}" />
+                            <RadioButton
+                                Margin="4"
+                                Content="Cognitive"
+                                IsChecked="{Binding Path=TranslationProvider, Source={x:Static properties:Settings.Default}, Mode=TwoWay, Converter={StaticResource RadioButtonIsCheckedConverter}, ConverterParameter='Cognitive'}"
+                                Style="{StaticResource MaterialDesignTabRadioButton}" />
+                        </StackPanel>
+                        <TextBlock
+                            Margin="8"
+                            Text="{Binding Locale[TranslateSettingsTabItem_ProviderSettingsExtendedText], Source={StaticResource AppViewModel}}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                        <TextBox materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_GoogleServiceKeyText], Source={StaticResource AppViewModel}}" Text="{Binding GoogleServiceKey, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+                        <TextBox materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_CognitiveServiceKeyText], Source={StaticResource AppViewModel}}" Text="{Binding CognitiveServiceKey, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+                        <TextBox materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_CognitiveServiceRegionText], Source={StaticResource AppViewModel}}" Text="{Binding CognitiveServiceRegion, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
