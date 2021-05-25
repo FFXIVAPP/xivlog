@@ -22,7 +22,7 @@ namespace XIVLOG.ViewModels {
         public ChatCodesViewModel() {
             this.CreateTabCommand = new DelegatedCommand(
                 _ => {
-                    List<ChatCode> selectedChatCodes = Constants.Instance.ChatCodes.Where(code => code.IsSelected).ToList();
+                    List<ChatCode> selectedChatCodes = AppViewModel.Instance.ChatCodes.Where(code => code.IsSelected).ToList();
                     foreach (ChatCode selectedChatCode in selectedChatCodes) {
                         selectedChatCode.IsSelected = false;
                     }

@@ -13,12 +13,12 @@ namespace XIVLOG.Controls {
     using System.Linq;
     using System.Windows.Controls;
 
+    using Sharlayan;
     using Sharlayan.Core;
 
     using XIVLOG.Helpers;
     using XIVLOG.Properties;
     using XIVLOG.SharlayanWrappers;
-    using XIVLOG.SharlayanWrappers.Events;
     using XIVLOG.Translation;
     using XIVLOG.Utilities;
     using XIVLOG.ViewModels;
@@ -38,7 +38,7 @@ namespace XIVLOG.Controls {
 
             this.DataContext = HomeTabItemViewModel.Instance;
 
-            EventHost.Instance.OnNewChatLogItem += this.OnOnNewChatLogItem;
+            EventHost.Instance.OnNewChatLogItem += this.OnNewChatLogItem;
         }
 
         ~HomeTabItem() {
@@ -46,29 +46,29 @@ namespace XIVLOG.Controls {
         }
 
         public void Dispose() {
-            EventHost.Instance.OnNewChatLogItem -= this.OnOnNewChatLogItem;
+            EventHost.Instance.OnNewChatLogItem -= this.OnNewChatLogItem;
         }
 
-        private void OnOnNewChatLogItem(object? sender, NewChatLogItemEvent e) {
+        private void OnNewChatLogItem(object? sender, MemoryHandler memoryHandler, ChatLogItem chatLogItem) {
             // unfiltered chat
-            FlowDocHelper.AppendChatLogItem(e.MemoryHandler, e.EventData, this.UnfilteredChatLog._FDR);
+            FlowDocHelper.AppendChatLogItem(memoryHandler, chatLogItem, this.UnfilteredChatLog._FDR);
 
             // handle translated chat
-            if (!Settings.Default.EnableTranslate || !Constants.ChatToTranslate.Contains(e.EventData.Code)) {
+            if (!Settings.Default.EnableTranslate || !Constants.ChatToTranslate.Contains(chatLogItem.Code)) {
                 return;
             }
 
-            TranslationResult result = Translate.GetAutomaticResult(e.EventData);
+            TranslationResult result = Translate.GetAutomaticResult(chatLogItem);
             if (result is null) {
                 return;
             }
 
-            if (e.EventData.Clone() is not ChatLogItem { } chatLogItem) {
+            if (chatLogItem.Clone() is not ChatLogItem { } newChatLogItem) {
                 return;
             }
 
-            chatLogItem.Message = result.Translated;
-            FlowDocHelper.AppendChatLogItem(e.MemoryHandler, chatLogItem, this.TranslatedChatLog._FDR);
+            newChatLogItem.Message = result.Translated;
+            FlowDocHelper.AppendChatLogItem(memoryHandler, newChatLogItem, this.TranslatedChatLog._FDR);
         }
     }
 }

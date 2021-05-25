@@ -11,9 +11,7 @@
 namespace XIVLOG.SharlayanWrappers.Workers {
     using System;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
     using System.Timers;
-    using System.Windows.Documents;
 
     using Sharlayan;
     using Sharlayan.Core;
@@ -69,30 +67,27 @@ namespace XIVLOG.SharlayanWrappers.Workers {
 
             this._isScanning = true;
 
-            Task.Run(
-                () => {
-                    ChatLogResult result = this._memoryHandler.Reader.GetChatLog(this._previousArrayIndex, this._previousOffset);
+            ChatLogResult result = this._memoryHandler.Reader.GetChatLog(this._previousArrayIndex, this._previousOffset);
 
-                    this._previousArrayIndex = result.PreviousArrayIndex;
-                    this._previousOffset = result.PreviousOffset;
+            this._previousArrayIndex = result.PreviousArrayIndex;
+            this._previousOffset = result.PreviousOffset;
 
-                    while (!result.ChatLogItems.IsEmpty) {
-                        if (result.ChatLogItems.TryDequeue(out ChatLogItem chatLogItem)) {
-                            EventHost.Instance.RaiseNewChatLogItemEvent(this._memoryHandler, chatLogItem);
-                            if (AppViewModel.Instance.ChatHistory.TryGetValue(chatLogItem.PlayerCharacterName, out List<ChatLogItem> chatLogItems)) {
-                                chatLogItems.Add(chatLogItem);
-                            }
-                            else {
-                                AppViewModel.Instance.ChatHistory.TryAdd(
-                                    chatLogItem.PlayerCharacterName, new List<ChatLogItem> {
-                                        chatLogItem
-                                    });
-                            }
-                        }
+            while (!result.ChatLogItems.IsEmpty) {
+                if (result.ChatLogItems.TryDequeue(out ChatLogItem chatLogItem)) {
+                    EventHost.Instance.RaiseNewChatLogItemEvent(this._memoryHandler, chatLogItem);
+                    if (AppViewModel.Instance.ChatHistory.TryGetValue(chatLogItem.PlayerCharacterName, out List<ChatLogItem> chatLogItems)) {
+                        chatLogItems.Add(chatLogItem);
                     }
+                    else {
+                        AppViewModel.Instance.ChatHistory.TryAdd(
+                            chatLogItem.PlayerCharacterName, new List<ChatLogItem> {
+                                chatLogItem,
+                            });
+                    }
+                }
+            }
 
-                    this._isScanning = false;
-                });
+            this._isScanning = false;
         }
     }
 }

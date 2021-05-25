@@ -15,9 +15,11 @@ namespace XIVLOG.Controls {
     using System.Windows;
     using System.Windows.Controls;
 
+    using Sharlayan;
+    using Sharlayan.Core;
+
     using XIVLOG.Helpers;
     using XIVLOG.SharlayanWrappers;
-    using XIVLOG.SharlayanWrappers.Events;
     using XIVLOG.Utilities;
     using XIVLOG.ViewModels;
 
@@ -32,7 +34,7 @@ namespace XIVLOG.Controls {
 
             Instance = this;
 
-            EventHost.Instance.OnNewChatLogItem += this.OnOnNewChatLogItem;
+            EventHost.Instance.OnNewChatLogItem += this.OnNewChatLogItem;
         }
 
         ~FilteredChatLog() {
@@ -40,7 +42,7 @@ namespace XIVLOG.Controls {
         }
 
         public void Dispose() {
-            EventHost.Instance.OnNewChatLogItem -= this.OnOnNewChatLogItem;
+            EventHost.Instance.OnNewChatLogItem -= this.OnNewChatLogItem;
         }
 
         private void Delete_OnClick(object sender, RoutedEventArgs e) {
@@ -48,7 +50,7 @@ namespace XIVLOG.Controls {
             HomeTabItemViewModel.Instance.FilteredChatTabItems.Remove(tabItem);
         }
 
-        private void OnOnNewChatLogItem(object? sender, NewChatLogItemEvent e) {
+        private void OnNewChatLogItem(object? sender, MemoryHandler memoryHandler, ChatLogItem chatLogItem) {
             this.Dispatcher.Invoke(
                 () => {
                     bool regExMatched = false;
@@ -62,7 +64,7 @@ namespace XIVLOG.Controls {
                             try {
                                 Regex regex = new Regex(xRegularExpression);
                                 if (SharedRegEx.IsValidRegex(xRegularExpression)) {
-                                    Match match = regex.Match(e.EventData.Message);
+                                    Match match = regex.Match(chatLogItem.Message);
                                     if (match.Success) {
                                         regExMatched = true;
                                     }
@@ -75,8 +77,8 @@ namespace XIVLOG.Controls {
                             break;
                     }
 
-                    if (regExMatched && this.ChatCodes.Items.Contains(e.EventData.Code)) {
-                        FlowDocHelper.AppendChatLogItem(e.MemoryHandler, e.EventData, this.ChatLogReader._FDR);
+                    if (regExMatched && this.ChatCodes.Items.Contains(chatLogItem.Code)) {
+                        FlowDocHelper.AppendChatLogItem(memoryHandler, chatLogItem, this.ChatLogReader._FDR);
                     }
                 });
         }

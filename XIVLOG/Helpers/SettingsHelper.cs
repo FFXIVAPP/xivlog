@@ -21,10 +21,10 @@ namespace XIVLOG.Helpers {
 
     public static class SettingsHelper {
         public static void SaveChatCodes() {
-            IEnumerable<XElement> xElements = Constants.Instance.XChatCodes.Descendants().Elements("Code");
+            IEnumerable<XElement> xElements = AppViewModel.Instance.XChatCodes.Descendants().Elements("Code");
             XElement[] enumerable = xElements as XElement[] ?? xElements.ToArray();
 
-            foreach (ChatCode chatCode in Constants.Instance.ChatCodes) {
+            foreach (ChatCode chatCode in AppViewModel.Instance.ChatCodes) {
                 XElement element = enumerable.FirstOrDefault(e => e.Attribute("Key")?.Value == chatCode.Code);
 
                 string xKey = chatCode.Code;
@@ -37,7 +37,7 @@ namespace XIVLOG.Helpers {
                 keyValuePairs.Add(new KeyValuePair<string, string>("Description", xDescription));
 
                 if (element is null) {
-                    XMLHelper.SaveXMLNode(Constants.Instance.XChatCodes, "Codes", "Code", xKey, keyValuePairs);
+                    XMLHelper.SaveXMLNode(AppViewModel.Instance.XChatCodes, "Codes", "Code", xKey, keyValuePairs);
                 }
                 else {
                     XElement xColorElement = element.Element("Color");
@@ -58,11 +58,11 @@ namespace XIVLOG.Helpers {
                 }
             }
 
-            Constants.Instance.XChatCodes.Save(Path.Combine(AppViewModel.Instance.ConfigurationsPath, "ChatCodes.xml"));
+            AppViewModel.Instance.XChatCodes.Save(Path.Combine(AppViewModel.Instance.ConfigurationsPath, "ChatCodes.xml"));
         }
 
         public static void SaveChatTabs() {
-            IEnumerable<XElement> xElements = Constants.Instance.XChatTabs.Descendants().Elements("Tab");
+            IEnumerable<XElement> xElements = AppViewModel.Instance.XChatTabs.Descendants().Elements("Tab");
             XElement[] enumerable = xElements as XElement[] ?? xElements.ToArray();
 
             foreach (TabItem filteredChatTabItem in HomeTabItemViewModel.Instance.FilteredChatTabItems) {
@@ -82,7 +82,7 @@ namespace XIVLOG.Helpers {
                 keyValuePairs.Add(new KeyValuePair<string, string>("RegEx", xRegEx));
 
                 if (element is null) {
-                    XMLHelper.SaveXMLNode(Constants.Instance.XChatTabs, "Tabs", "Tab", xKey, keyValuePairs);
+                    XMLHelper.SaveXMLNode(AppViewModel.Instance.XChatTabs, "Tabs", "Tab", xKey, keyValuePairs);
                 }
                 else {
                     XElement xChatCodesElement = element.Element("ChatCodes");
@@ -103,7 +103,7 @@ namespace XIVLOG.Helpers {
                 }
             }
 
-            Constants.Instance.XChatTabs.Save(Path.Combine(AppViewModel.Instance.SettingsPath, "ChatTabs.xml"));
+            AppViewModel.Instance.XChatTabs.Save(Path.Combine(AppViewModel.Instance.SettingsPath, "ChatTabs.xml"));
         }
     }
 }

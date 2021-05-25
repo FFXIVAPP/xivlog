@@ -15,9 +15,11 @@ namespace XIVLOG.ViewModels {
     using System.Collections.ObjectModel;
     using System.Globalization;
     using System.IO;
+    using System.Xml.Linq;
 
     using Sharlayan.Core;
 
+    using XIVLOG.Helpers;
     using XIVLOG.Models;
 
     public class AppViewModel : PropertyChangedBase {
@@ -27,7 +29,11 @@ namespace XIVLOG.ViewModels {
 
         private string _cachePath;
 
+        private ObservableCollection<ChatCode> _chatCodes;
+
         private string _configurationsPath;
+
+        private CultureInfo _cultureInfo;
 
         private ObservableCollection<LanguageItem> _interfaceLanguages;
 
@@ -38,6 +44,10 @@ namespace XIVLOG.ViewModels {
         private List<string> _savedLogsDirectoryList;
 
         private string _settingsPath;
+
+        private XDocument _xChatCodes;
+
+        private XDocument _xChatTabs;
 
         public AppViewModel() {
             this.InterfaceLanguages.Add(
@@ -113,6 +123,13 @@ namespace XIVLOG.ViewModels {
             }
         }
 
+        public ObservableCollection<ChatCode> ChatCodes {
+            get => this._chatCodes ??= new ObservableCollection<ChatCode>();
+            set => this.SetProperty(ref this._chatCodes, value);
+        }
+
+        public ConcurrentDictionary<string, List<ChatLogItem>> ChatHistory { get; } = new ConcurrentDictionary<string, List<ChatLogItem>>();
+
         public string ConfigurationsPath {
             get => this._configurationsPath;
             set {
@@ -122,6 +139,11 @@ namespace XIVLOG.ViewModels {
 
                 this.SetProperty(ref this._configurationsPath, value);
             }
+        }
+
+        public CultureInfo CultureInfo {
+            get => this._cultureInfo ??= new CultureInfo("en");
+            set => this.SetProperty(ref this._cultureInfo, value);
         }
 
         public ObservableCollection<LanguageItem> InterfaceLanguages {
@@ -171,6 +193,46 @@ namespace XIVLOG.ViewModels {
             }
         }
 
-        public ConcurrentDictionary<string, List<ChatLogItem>> ChatHistory { get; } = new ConcurrentDictionary<string, List<ChatLogItem>>();
+        public XDocument XChatCodes {
+            get {
+                if (this._xChatCodes is not null) {
+                    return this._xChatCodes;
+                }
+
+                string path = Path.Combine(this.CachePath, "Configurations", "ChatCodes.xml");
+                try {
+                    this._xChatCodes = File.Exists(path)
+                                           ? XDocument.Load(path)
+                                           : ResourceHelper.LoadXML($"{Constants.AppPack}Resources/ChatCodes.xml");
+                }
+                catch (Exception) {
+                    this._xChatCodes = ResourceHelper.LoadXML($"{Constants.AppPack}Resources/ChatCodes.xml");
+                }
+
+                return this._xChatCodes;
+            }
+            set => this.SetProperty(ref this._xChatCodes, value);
+        }
+
+        public XDocument XChatTabs {
+            get {
+                if (this._xChatTabs is not null) {
+                    return this._xChatTabs;
+                }
+
+                string path = Path.Combine(this.CachePath, "Settings", "Tabs.xml");
+                try {
+                    this._xChatTabs = File.Exists(path)
+                                          ? XDocument.Load(path)
+                                          : ResourceHelper.LoadXML($"{Constants.AppPack}Resources/ChatTabs.xml");
+                }
+                catch (Exception) {
+                    this._xChatTabs = ResourceHelper.LoadXML($"{Constants.AppPack}Resources/ChatTabs.xml");
+                }
+
+                return this._xChatTabs;
+            }
+            set => this.SetProperty(ref this._xChatTabs, value);
+        }
     }
 }

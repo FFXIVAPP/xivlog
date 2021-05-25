@@ -54,7 +54,7 @@ namespace XIVLOG {
         }
 
         private void LoadChatCodes() {
-            foreach (XElement xElement in Constants.Instance.XChatCodes.Descendants().Elements("Code")) {
+            foreach (XElement xElement in AppViewModel.Instance.XChatCodes.Descendants().Elements("Code")) {
                 string xKey = xElement.Attribute("Key")?.Value;
                 string xColor = xElement.Element("Color")?.Value ?? "FFFFFF";
                 string xDescription = xElement.Element("Description")?.Value ?? "Unknown";
@@ -63,12 +63,12 @@ namespace XIVLOG {
                     continue;
                 }
 
-                Constants.Instance.ChatCodes.Add(new ChatCode(xKey, xColor, xDescription));
+                AppViewModel.Instance.ChatCodes.Add(new ChatCode(xKey, xColor, xDescription));
             }
         }
 
         private void LoadChatTabs() {
-            foreach (XElement xElement in Constants.Instance.XChatTabs.Descendants().Elements("Tab")) {
+            foreach (XElement xElement in AppViewModel.Instance.XChatTabs.Descendants().Elements("Tab")) {
                 string xKey = xElement.Attribute("Key")?.Value;
                 string xChatCodes = xElement.Element("ChatCodes")?.Value;
                 string xRegEx = xElement.Element("RegEx")?.Value;
@@ -140,17 +140,17 @@ namespace XIVLOG {
         private void SetupCurrentUICulture() {
             string cultureInfo = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             CultureInfo currentCulture = new CultureInfo(cultureInfo);
-            Constants.Instance.CultureInfo = Settings.Default.CultureSet
-                                                 ? Settings.Default.Culture
-                                                 : currentCulture;
+            AppViewModel.Instance.CultureInfo = Settings.Default.CultureSet
+                                                    ? Settings.Default.Culture
+                                                    : currentCulture;
             Settings.Default.CultureSet = true;
         }
 
         private void SetupDirectories() {
-            AppViewModel.Instance.CachePath = Constants.Instance.CachePath;
-            AppViewModel.Instance.ConfigurationsPath = Constants.Instance.ConfigurationsPath;
-            AppViewModel.Instance.LogsPath = Constants.Instance.LogsPath;
-            AppViewModel.Instance.SettingsPath = Constants.Instance.SettingsPath;
+            AppViewModel.Instance.CachePath = Constants.CachePath;
+            AppViewModel.Instance.ConfigurationsPath = Constants.ConfigurationsPath;
+            AppViewModel.Instance.LogsPath = Constants.LogsPath;
+            AppViewModel.Instance.SettingsPath = Constants.SettingsPath;
             AppViewModel.Instance.SavedLogsDirectoryList = new List<string> {
                 "Say",
                 "Shout",

@@ -78,7 +78,7 @@ namespace XIVLOG {
                     case "InterfaceLanguage":
                         LanguageItem item = AppViewModel.Instance.InterfaceLanguages.FirstOrDefault(languageItem => languageItem.Language == Settings.Default.InterfaceLanguage);
                         if (item is not null) {
-                            Constants.Instance.CultureInfo = Settings.Default.Culture = item.CultureInfo;
+                            AppViewModel.Instance.CultureInfo = Settings.Default.Culture = item.CultureInfo;
                             LocaleHelper.UpdateLocale(Settings.Default.Culture);
                         }
 
