@@ -1,20 +1,24 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AppContext.cs" company="SyndicatedLife">
+// <copyright file="ThemeUtilities.cs" company="SyndicatedLife">
 //   Copyright© 2007 - 2021 Ryan Wilson <syndicated.life@gmail.com> (https://syndicated.life/)
 //   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
 // </copyright>
 // <summary>
-//   AppContext.cs Implementation
+//   ThemeUtilities.cs Implementation
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace XIVLOG.Launcher {
+namespace XIVLOG.Utilities {
     using System;
 
-    public class AppContext {
-        private static Lazy<AppContext> _instance = new Lazy<AppContext>(() => new AppContext());
+    using MaterialDesignThemes.Wpf;
 
-        public static AppContext Instance => _instance.Value;
-        public GitHubRelease ReleaseInfo { get; set; }
+    public static class ThemeUtilities {
+        public static void ModifyTheme(Action<ITheme> modificationAction) {
+            PaletteHelper paletteHelper = new PaletteHelper();
+            ITheme theme = paletteHelper.GetTheme();
+            modificationAction?.Invoke(theme);
+            paletteHelper.SetTheme(theme);
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="HomeTabItemViewModel.cs" company="SyndicatedLife">
-//   Copyright© 2007 - 2021 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (https://syndicated.life/)
+//   Copyright© 2007 - 2021 Ryan Wilson <syndicated.life@gmail.com> (https://syndicated.life/)
 //   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
 // </copyright>
 // <summary>
@@ -12,6 +12,7 @@ namespace XIVLOG.ViewModels {
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Windows;
     using System.Windows.Controls;
 
     using XIVLOG.Controls;
@@ -42,6 +43,7 @@ namespace XIVLOG.ViewModels {
 
                     TranslationResult result = Translate.GetManualResult(message, fromLanguage, toLanguage);
                     if (result is not null) {
+                        Clipboard.SetText(result.Translated);
                         HomeTabItem.Instance.ManualTranslate.Text = result.Translated;
                     }
                 });

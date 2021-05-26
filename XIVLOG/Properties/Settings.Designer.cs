@@ -102,7 +102,7 @@ namespace XIVLOG.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("deeppurple")]
+        [global::System.Configuration.DefaultSettingValueAttribute("cyan")]
         public string UserThemePrimary {
             get {
                 return ((string)(this["UserThemePrimary"]));

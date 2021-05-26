@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="SavedLogsHelper.cs" company="SyndicatedLife">
-//   Copyright© 2007 - 2021 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (https://syndicated.life/)
+//   Copyright© 2007 - 2021 Ryan Wilson <syndicated.life@gmail.com> (https://syndicated.life/)
 //   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
 // </copyright>
 // <summary>
@@ -97,8 +97,7 @@ namespace XIVLOG.Helpers {
                     foreach ((string playerName, List<ChatLogItem> chatLogItems) in AppViewModel.Instance.ChatHistory) {
                         foreach (ChatLogItem chatLogItem in chatLogItems) {
                             // process text logging
-                            try
-                            {
+                            try {
                                 if (_textLogBuilders.ContainsKey(chatLogItem.Code)) {
                                     string prefix = $"[{playerName}]";
                                     if (Constants.ChatLS.Contains(chatLogItem.Code)) {
@@ -112,14 +111,12 @@ namespace XIVLOG.Helpers {
                                     _textLogBuilders[chatLogItem.Code].AppendLine($"{prefix} {chatLogItem.TimeStamp} {chatLogItem.Line}");
                                 }
                             }
-                            catch (Exception ex)
-                            {
+                            catch (Exception ex) {
                                 Logging.Log(Logger, new LogItem(ex, true));
                             }
 
                             // process xml log
-                            try
-                            {
+                            try {
                                 string xTimeStamp = chatLogItem.TimeStamp.ToString("[HH:mm:ss]");
                                 string xCode = chatLogItem.Code;
                                 string xBytes = chatLogItem.Bytes.Aggregate(string.Empty, (current, bytes) => current + bytes + " ").Trim();
@@ -134,8 +131,7 @@ namespace XIVLOG.Helpers {
 
                                 XMLHelper.SaveXMLNode(xChatHistory, "History", "Entry", xCode, keyPairList);
                             }
-                            catch (Exception ex)
-                            {
+                            catch (Exception ex) {
                                 Logging.Log(Logger, new LogItem(ex, true));
                             }
                         }

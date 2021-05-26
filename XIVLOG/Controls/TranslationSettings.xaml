@@ -37,6 +37,7 @@
             </materialDesign:Card>
             <TextBlock
                 Margin="0,8"
+                Foreground="{DynamicResource MaterialDesignBody}"
                 Text="{Binding Locale[TranslateSettingsTabItem_GeneralSettingsExtendedText], Source={StaticResource AppViewModel}}"
                 TextWrapping="Wrap" />
             <Grid>
@@ -66,6 +67,7 @@
                     Width="200"
                     Margin="8,0,0,24"
                     materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_AutomaticTranslationToText], Source={StaticResource AppViewModel}}"
+                    Foreground="{DynamicResource MaterialDesignBody}"
                     ItemsSource="{Binding TranslateLanguages, Source={x:Static properties:Settings.Default}}"
                     SelectedValue="{Binding TranslateToLanguage, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
                 <ComboBox
@@ -73,6 +75,7 @@
                     Width="200"
                     Margin="8,0,0,24"
                     materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_AutomaticTranslationFromText], Source={StaticResource AppViewModel}}"
+                    Foreground="{DynamicResource MaterialDesignBody}"
                     ItemsSource="{Binding TranslateLanguages, Source={x:Static properties:Settings.Default}}"
                     SelectedValue="{Binding TranslateFromLanguage, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
             </Grid>
@@ -100,24 +103,33 @@
                             <RadioButton
                                 Margin="4"
                                 Content="Google"
+                                Foreground="{DynamicResource MaterialDesignBody}"
                                 IsChecked="{Binding Path=TranslationProvider, Source={x:Static properties:Settings.Default}, Mode=TwoWay, Converter={StaticResource RadioButtonIsCheckedConverter}, ConverterParameter='Google'}"
                                 Style="{StaticResource MaterialDesignTabRadioButton}" />
                             <RadioButton
                                 Margin="4"
                                 Content="Cognitive"
+                                Foreground="{DynamicResource MaterialDesignBody}"
                                 IsChecked="{Binding Path=TranslationProvider, Source={x:Static properties:Settings.Default}, Mode=TwoWay, Converter={StaticResource RadioButtonIsCheckedConverter}, ConverterParameter='Cognitive'}"
                                 Style="{StaticResource MaterialDesignTabRadioButton}" />
                         </StackPanel>
                         <TextBlock
                             Margin="8"
+                            Foreground="{DynamicResource MaterialDesignBody}"
                             Text="{Binding Locale[TranslateSettingsTabItem_ProviderSettingsExtendedText], Source={StaticResource AppViewModel}}"
                             TextWrapping="Wrap" />
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Margin="8,0,0,0">
-                        <TextBox materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_GoogleServiceKeyText], Source={StaticResource AppViewModel}}" Text="{Binding GoogleServiceKey, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
-                        <TextBox materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_CognitiveServiceKeyText], Source={StaticResource AppViewModel}}" Text="{Binding CognitiveServiceKey, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
-                        <TextBox materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_CognitiveServiceRegionText], Source={StaticResource AppViewModel}}" Text="{Binding CognitiveServiceRegion, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+                        <TextBox
+                            materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_GoogleServiceKeyText], Source={StaticResource AppViewModel}}"
+                            Text="{Binding GoogleServiceKey, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+                        <TextBox
+                            materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_CognitiveServiceKeyText], Source={StaticResource AppViewModel}}"
+                            Text="{Binding CognitiveServiceKey, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+                        <TextBox
+                            materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_CognitiveServiceRegionText], Source={StaticResource AppViewModel}}"
+                            Text="{Binding CognitiveServiceRegion, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
                     </StackPanel>
                 </Grid>
             </StackPanel>

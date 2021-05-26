@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Translate.cs" company="SyndicatedLife">
-//   Copyright© 2007 - 2021 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (https://syndicated.life/)
+//   Copyright© 2007 - 2021 Ryan Wilson <syndicated.life@gmail.com> (https://syndicated.life/)
 //   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
 // </copyright>
 // <summary>
@@ -56,7 +56,7 @@ namespace XIVLOG.Utilities {
 
         public static TranslationResult GetManualResult(string text, string fromLanguage, string toLanguage) {
             try {
-                return GetTranslationProvider().TranslateText(text, fromLanguage, toLanguage, false);
+                return GetTranslationProvider()?.TranslateText(text, fromLanguage, toLanguage, false);
             }
             catch (Exception ex) {
                 Logging.Log(Logger, new LogItem(ex, true));
@@ -65,21 +65,24 @@ namespace XIVLOG.Utilities {
             return null;
         }
 
-        private static ITranslationProvider GetTranslationProvider() {
+        private static ITranslationProvider? GetTranslationProvider() {
             switch (Settings.Default.TranslationProvider) {
                 case "Google":
                     if (string.IsNullOrWhiteSpace(Settings.Default.GoogleServiceKey)) {
-                        throw new NotImplementedException($"{Settings.Default.TranslationProvider} is missing service key");
+                        Logging.Log(Logger, $"{Settings.Default.TranslationProvider} is missing service key");
+                        return null;
                     }
 
                     return _googleTranslateProvider ??= new GoogleTranslateProvider(Settings.Default.GoogleServiceKey);
                 case "Cognitive":
                     if (string.IsNullOrWhiteSpace(Settings.Default.CognitiveServiceKey)) {
-                        throw new NotImplementedException($"{Settings.Default.TranslationProvider} is missing service key");
+                        Logging.Log(Logger, $"{Settings.Default.TranslationProvider} is missing service key");
+                        return null;
                     }
 
                     if (string.IsNullOrWhiteSpace(Settings.Default.CognitiveServiceRegion)) {
-                        throw new NotImplementedException($"{Settings.Default.TranslationProvider} is missing service region");
+                        Logging.Log(Logger, $"{Settings.Default.TranslationProvider} is missing service region");
+                        return null;
                     }
 
                     return _cognitiveTranslateProvider ??= new CognitiveTranslateProvider(Settings.Default.CognitiveServiceKey, Settings.Default.CognitiveServiceRegion);
@@ -100,11 +103,11 @@ namespace XIVLOG.Utilities {
 
             if (Settings.Default.TranslateInternationalOnly) {
                 if (chatLogItem.IsInternational) {
-                    result = GetTranslationProvider().TranslateText(chatLogItem.Message, fromLanguage, toLanguage, chatLogItem.IsInternational);
+                    result = GetTranslationProvider()?.TranslateText(chatLogItem.Message, fromLanguage, toLanguage, chatLogItem.IsInternational);
                 }
             }
             else {
-                result = GetTranslationProvider().TranslateText(chatLogItem.Message, fromLanguage, toLanguage, chatLogItem.IsInternational);
+                result = GetTranslationProvider()?.TranslateText(chatLogItem.Message, fromLanguage, toLanguage, chatLogItem.IsInternational);
             }
 
             return result;

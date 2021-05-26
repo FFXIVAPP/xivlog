@@ -1,19 +1,22 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GitHubRelease.cs" company="SyndicatedLife">
+// <copyright file="Palette.xaml.cs" company="SyndicatedLife">
 //   Copyright© 2007 - 2021 Ryan Wilson <syndicated.life@gmail.com> (https://syndicated.life/)
 //   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
 // </copyright>
 // <summary>
-//   GitHubRelease.cs Implementation
+//   Palette.xaml.cs Implementation
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace XIVLOG.Launcher {
-    using System.Collections.Generic;
+namespace XIVLOG.Controls {
+    using System.Windows.Controls;
 
-    public class GitHubRelease {
-        public List<GitHubReleaseAsset> assets { get; set; }
-        public string tag_name { get; set; }
-        public string target_commitish { get; set; }
+    /// <summary>
+    /// Interaction logic for Palette.xaml
+    /// </summary>
+    public partial class Palette : UserControl {
+        public Palette() {
+            this.InitializeComponent();
+        }
     }
 }

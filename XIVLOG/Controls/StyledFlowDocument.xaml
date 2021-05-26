@@ -26,6 +26,7 @@
                 x:FieldModifier="public"
                 BorderBrush="{DynamicResource MaterialDesignBody}"
                 BorderThickness="2"
+                Foreground="{DynamicResource MaterialDesignBody}"
                 ViewingMode="Scroll">
                 <FlowDocument
                     x:Name="_FD"

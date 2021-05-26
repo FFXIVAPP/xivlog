@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="AppContext.cs" company="SyndicatedLife">
-//   Copyright© 2007 - 2021 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (https://syndicated.life/)
+//   Copyright© 2007 - 2021 Ryan Wilson <syndicated.life@gmail.com> (https://syndicated.life/)
 //   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
 // </copyright>
 // <summary>
@@ -18,6 +18,10 @@ namespace XIVLOG {
     using System.Threading.Tasks;
     using System.Xml.Linq;
 
+    using MaterialDesignColors;
+
+    using MaterialDesignThemes.Wpf;
+
     using Sharlayan;
     using Sharlayan.Events;
     using Sharlayan.Models;
@@ -27,6 +31,7 @@ namespace XIVLOG {
     using XIVLOG.Models;
     using XIVLOG.Properties;
     using XIVLOG.SharlayanWrappers;
+    using XIVLOG.Utilities;
     using XIVLOG.ViewModels;
 
     public class AppContext {
@@ -41,12 +46,31 @@ namespace XIVLOG {
         public void Initialize() {
             this.SetupCurrentUICulture();
             this.SetupDirectories();
+            this.ApplyTheme();
             this.LoadChatCodes();
             this.LoadChatTabs();
             this.FindGameInstances();
             this.SetupSharlayanManager();
             this.SetupWorkerSets();
             this.StartAllSharlayanWorkers();
+        }
+
+        private void ApplyTheme() {
+            ThemeUtilities.ModifyTheme(
+                theme => theme.SetBaseTheme(
+                    Settings.Default.DarkMode
+                        ? Theme.Dark
+                        : Theme.Light));
+            SwatchesProvider swatchesProvider = new SwatchesProvider();
+            Swatch primaryColor = swatchesProvider.Swatches.FirstOrDefault(a => string.Equals(a.Name, Settings.Default.UserThemePrimary, StringComparison.OrdinalIgnoreCase));
+            if (primaryColor is not null) {
+                ThemeUtilities.ModifyTheme(theme => theme.SetPrimaryColor(primaryColor.ExemplarHue.Color));
+            }
+
+            Swatch accentColor = swatchesProvider.Swatches.FirstOrDefault(a => string.Equals(a.Name, Settings.Default.UserThemeAccent, StringComparison.OrdinalIgnoreCase));
+            if (accentColor is { AccentExemplarHue: not null, }) {
+                ThemeUtilities.ModifyTheme(theme => theme.SetSecondaryColor(accentColor.AccentExemplarHue.Color));
+            }
         }
 
         private void FindGameInstances() {

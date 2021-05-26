@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="ChatCode.cs" company="SyndicatedLife">
-//   Copyright© 2007 - 2021 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (https://syndicated.life/)
+//   Copyright© 2007 - 2021 Ryan Wilson <syndicated.life@gmail.com> (https://syndicated.life/)
 //   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
 // </copyright>
 // <summary>
@@ -22,11 +22,6 @@ namespace XIVLOG.Models {
             this.Description = "Unknown";
         }
 
-        public bool IsSelected {
-            get => this._isSelected;
-            set => this.SetProperty(ref this._isSelected, value);
-        }
-
         public ChatCode(string code, string color, string description) {
             this.Code = code;
             this.Color = color;
@@ -43,6 +38,11 @@ namespace XIVLOG.Models {
         public string Description {
             get => this._description;
             set => this.SetProperty(ref this._description, value);
+        }
+
+        public bool IsSelected {
+            get => this._isSelected;
+            set => this.SetProperty(ref this._isSelected, value);
         }
     }
 }

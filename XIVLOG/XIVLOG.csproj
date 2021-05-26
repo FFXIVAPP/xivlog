@@ -53,43 +53,43 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Resource Include="Resources\ChatHistory.xml" />
-	  <Resource Include="Resources\ChatTabs.xml" />
-	  <Resource Include="Resources\XIVLOG.exe.nlog" />
-	  <Resource Include="Resources\Contact.png" />
-	  <Resource Include="Resources\logo.ico" />
-	  <Resource Include="Resources\logo.png" />
-	  <Resource Include="Resources\logo.svg" />
-	  <Resource Include="Resources\EN.png" />
-	  <Resource Include="Resources\ChatCodes.xml" />
-	  <Resource Include="Resources\ZH.png" />
-	  <Resource Include="Resources\DE.png" />
-	  <Resource Include="Resources\FR.png" />
-	  <Resource Include="Resources\JA.png" />
-	  <Resource Include="Resources\KO.png" />
+		<Resource Include="Resources\ChatHistory.xml" />
+		<Resource Include="Resources\ChatTabs.xml" />
+		<Resource Include="Resources\XIVLOG.exe.nlog" />
+		<Resource Include="Resources\Contact.png" />
+		<Resource Include="Resources\logo.ico" />
+		<Resource Include="Resources\logo.png" />
+		<Resource Include="Resources\logo.svg" />
+		<Resource Include="Resources\EN.png" />
+		<Resource Include="Resources\ChatCodes.xml" />
+		<Resource Include="Resources\ZH.png" />
+		<Resource Include="Resources\DE.png" />
+		<Resource Include="Resources\FR.png" />
+		<Resource Include="Resources\JA.png" />
+		<Resource Include="Resources\KO.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Properties\Settings.Designer.cs">
-	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Settings.settings</DependentUpon>
-	  </Compile>
-	  <Compile Update="Settings.Designer.cs">
-	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Settings.settings</DependentUpon>
-	  </Compile>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="Properties\Settings.settings">
-	    <Generator>SettingsSingleFileGenerator</Generator>
-	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-	  </None>
-	  <None Update="Settings.settings">
-	    <Generator>SettingsSingleFileGenerator</Generator>
-	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-	  </None>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
 	</ItemGroup>
 </Project>

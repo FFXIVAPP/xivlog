@@ -29,7 +29,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="UserThemePrimary" Type="System.String" Scope="User">
-      <Value Profile="(Default)">deeppurple</Value>
+      <Value Profile="(Default)">cyan</Value>
     </Setting>
     <Setting Name="UserThemeAccent" Type="System.String" Scope="User">
       <Value Profile="(Default)">purple</Value>
