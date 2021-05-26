@@ -48,14 +48,14 @@ namespace XIVLOG.SharlayanWrappers {
             this.PartyWorker = new PartyWorker(this._memoryHandler);
             this.TargetWorker = new TargetWorker(this._memoryHandler);
 
-            this.ActionWorker.StartScanning();
+            //this.ActionWorker.StartScanning();
             this.ActorWorker.StartScanning();
             this.ChatLogWorker.StartScanning();
-            this.CurrentPlayerWorker.StartScanning();
-            this.InventoryWorker.StartScanning();
-            this.JobResourceWorker.StartScanning();
-            this.PartyWorker.StartScanning();
-            this.TargetWorker.StartScanning();
+            //this.CurrentPlayerWorker.StartScanning();
+            //this.InventoryWorker.StartScanning();
+            //this.JobResourceWorker.StartScanning();
+            //this.PartyWorker.StartScanning();
+            //this.TargetWorker.StartScanning();
         }
 
         public void StopMemoryWorkers() {

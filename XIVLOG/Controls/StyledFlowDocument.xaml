@@ -31,11 +31,10 @@
                 <FlowDocument
                     x:Name="_FD"
                     x:FieldModifier="public"
-                    Background="{DynamicResource MaterialDesignPaper}"
+                    Background="{DynamicResource MaterialDesignDarkBackground}"
                     ColumnWidth="9000"
                     FontFamily="Segoe UI"
                     FontSize="12"
-                    Foreground="Black"
                     PagePadding="5, 0"
                     TextAlignment="Left">
                     <FlowDocument.Resources>
