@@ -35,6 +35,7 @@
                     ColumnWidth="9000"
                     FontFamily="Segoe UI"
                     FontSize="12"
+                    Foreground="White"
                     PagePadding="5, 0"
                     TextAlignment="Left">
                     <FlowDocument.Resources>
