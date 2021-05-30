@@ -10,6 +10,10 @@
 
 namespace XIVLOG.Models {
     public class ChatCode : PropertyChangedBase {
+        private const string DEFAULT_COLOR = "FFFFFF";
+
+        private const string DEFAULT_DESCRIPTION = "Unknown";
+
         private string _color;
 
         private string _description;
@@ -18,8 +22,13 @@ namespace XIVLOG.Models {
 
         public ChatCode(string code) {
             this.Code = code;
-            this.Color = "FFFFFF";
-            this.Description = "Unknown";
+            this.Color = DEFAULT_COLOR;
+            this.Description = DEFAULT_DESCRIPTION;
+        }
+
+        public bool IsSelected {
+            get => this._isSelected;
+            set => this.SetProperty(ref this._isSelected, value);
         }
 
         public ChatCode(string code, string color, string description) {
@@ -38,11 +47,6 @@ namespace XIVLOG.Models {
         public string Description {
             get => this._description;
             set => this.SetProperty(ref this._description, value);
-        }
-
-        public bool IsSelected {
-            get => this._isSelected;
-            set => this.SetProperty(ref this._isSelected, value);
         }
     }
 }

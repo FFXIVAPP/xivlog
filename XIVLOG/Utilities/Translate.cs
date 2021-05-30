@@ -48,7 +48,7 @@ namespace XIVLOG.Utilities {
                 return result;
             }
             catch (Exception ex) {
-                Logging.Log(Logger, new LogItem(ex, true));
+                Logging.Log(Logger, new LogItem(ex));
             }
 
             return null;
@@ -59,7 +59,7 @@ namespace XIVLOG.Utilities {
                 return GetTranslationProvider()?.TranslateText(text, fromLanguage, toLanguage, false);
             }
             catch (Exception ex) {
-                Logging.Log(Logger, new LogItem(ex, true));
+                Logging.Log(Logger, new LogItem(ex));
             }
 
             return null;

@@ -22,6 +22,8 @@ namespace XIVLOG {
 
     using MaterialDesignThemes.Wpf;
 
+    using NLog;
+
     using Sharlayan;
     using Sharlayan.Models;
 
@@ -110,10 +112,12 @@ namespace XIVLOG {
             }
         }
 
-        private void MemoryHandler_OnExceptionEvent(object sender, Exception ex) {
+        private void MemoryHandler_OnExceptionEvent(object sender, Logger logger, Exception ex) {
             if (sender is not MemoryHandler memoryHandler) {
                 return;
             }
+
+            Logging.Log(logger, new LogItem(ex));
 
             // TODO: this should be handled in sharlayan; when we can detect character changes this will be updated/removed and placed in sharlayan
             if (ex.GetType() != typeof(OverflowException)) {

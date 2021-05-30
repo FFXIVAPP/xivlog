@@ -78,7 +78,7 @@ namespace XIVLOG.Translation {
                 result.Translated = translation;
             }
             catch (Exception ex) {
-                Logging.Log(Logger, new LogItem(ex, true));
+                Logging.Log(Logger, new LogItem(ex));
             }
 
             return result;

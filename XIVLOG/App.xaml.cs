@@ -86,7 +86,7 @@ namespace XIVLOG {
                 }
             }
             catch (Exception ex) {
-                Logging.Log(Logger, new LogItem(ex, true));
+                Logging.Log(Logger, new LogItem(ex));
             }
         }
 

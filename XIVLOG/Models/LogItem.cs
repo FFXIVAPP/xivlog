@@ -20,20 +20,18 @@ namespace XIVLOG.Models {
                                : message;
         }
 
-        public LogItem(Exception exception, bool levelIsError = false) {
+        public LogItem(Exception exception) {
             this.Message = exception?.Message ?? "LogItem: Called Without Exception";
             this.Exception = exception;
-            if (levelIsError) {
-                this.LogLevel = LogLevel.Error;
-            }
+            this.LogLevel = LogLevel.Error;
         }
 
-        public LogItem(string message, Exception exception, bool levelIsError = false) {
+        public LogItem(string message, Exception exception) {
             this.Message = string.IsNullOrWhiteSpace(message)
                                ? exception?.Message ?? "LogItem: Called Without Message"
                                : message;
             this.Exception = exception;
-            if (this.Exception != null && levelIsError) {
+            if (this.Exception != null) {
                 this.LogLevel = LogLevel.Error;
             }
         }
