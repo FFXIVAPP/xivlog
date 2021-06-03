@@ -31,18 +31,12 @@ namespace XIVLOG.SharlayanWrappers.Workers {
             this._scanTimer.Elapsed += this.ScanTimerElapsed;
         }
 
-        ~ActorWorker() {
-            this.Dispose();
-        }
-
-        private bool _monsterReferencesSet { get; set; }
-
-        private bool _npcReferencesSet { get; set; }
-
-        private bool _pcReferencesSet { get; set; }
-
         public void Dispose() {
             this._scanTimer.Elapsed -= this.ScanTimerElapsed;
+        }
+
+        ~ActorWorker() {
+            this.Dispose();
         }
 
         public void StartScanning() {
@@ -64,20 +58,9 @@ namespace XIVLOG.SharlayanWrappers.Workers {
 
             ActorResult result = this._memoryHandler.Reader.GetActors();
 
-            if (!this._monsterReferencesSet) {
-                this._monsterReferencesSet = true;
-                EventHost.Instance.RaiseNewMonsterActorItemsEvent(this._memoryHandler, result.CurrentMonsters);
-            }
-
-            if (!this._npcReferencesSet) {
-                this._npcReferencesSet = true;
-                EventHost.Instance.RaiseNewNPCActorItemsEvent(this._memoryHandler, result.CurrentNPCs);
-            }
-
-            if (!this._pcReferencesSet) {
-                this._pcReferencesSet = true;
-                EventHost.Instance.RaiseNewPCActorItemsEvent(this._memoryHandler, result.CurrentPCs);
-            }
+            EventHost.Instance.RaiseNewMonsterActorItemsEvent(this._memoryHandler, result.CurrentMonsters);
+            EventHost.Instance.RaiseNewNPCActorItemsEvent(this._memoryHandler, result.CurrentNPCs);
+            EventHost.Instance.RaiseNewPCActorItemsEvent(this._memoryHandler, result.CurrentPCs);
 
             if (result.NewMonsters.Any()) {
                 EventHost.Instance.RaiseMonsterActorItemsAddedEvent(this._memoryHandler, result.NewMonsters);

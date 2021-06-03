@@ -36,7 +36,7 @@
                 </StackPanel>
             </materialDesign:Card>
             <TextBlock
-                Margin="0,8"
+                Margin="0,10"
                 Foreground="{DynamicResource MaterialDesignBody}"
                 Text="{Binding Locale[TranslateSettingsTabItem_GeneralSettingsExtendedText], Source={StaticResource AppViewModel}}"
                 TextWrapping="Wrap" />
@@ -48,32 +48,44 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <CheckBox
+                <StackPanel
                     Grid.Column="0"
                     Margin="0,0,8,8"
-                    Content="{Binding Locale[TranslateSettingsTabItem_EnableTranslateText], Source={StaticResource AppViewModel}}"
-                    Foreground="{DynamicResource MaterialDesignBody}"
-                    IsChecked="{Binding EnableTranslate, Mode=TwoWay, Source={x:Static properties:Settings.Default}}"
-                    Style="{StaticResource MaterialDesignDarkCheckBox}" />
-                <CheckBox
+                    Orientation="Horizontal">
+                    <ToggleButton
+                        Margin="2,8,8,8"
+                        Cursor="Hand"
+                        IsChecked="{Binding EnableTranslate, Mode=TwoWay, Source={x:Static properties:Settings.Default}}" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Foreground="{DynamicResource MaterialDesignBody}"
+                        Text="{Binding Locale[TranslateSettingsTabItem_EnableTranslateText], Source={StaticResource AppViewModel}}" />
+                </StackPanel>
+                <StackPanel
                     Grid.Column="1"
                     Margin="8,0,8,8"
-                    Content="{Binding Locale[TranslateSettingsTabItem_InternationalOnly], Source={StaticResource AppViewModel}}"
-                    Foreground="{DynamicResource MaterialDesignBody}"
-                    IsChecked="{Binding TranslateInternationalOnly, Mode=TwoWay, Source={x:Static properties:Settings.Default}}"
-                    Style="{StaticResource MaterialDesignDarkCheckBox}" />
+                    Orientation="Horizontal">
+                    <ToggleButton
+                        Margin="2,8,8,8"
+                        Cursor="Hand"
+                        IsChecked="{Binding TranslateInternationalOnly, Mode=TwoWay, Source={x:Static properties:Settings.Default}}" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Foreground="{DynamicResource MaterialDesignBody}"
+                        Text="{Binding Locale[TranslateSettingsTabItem_InternationalOnly], Source={StaticResource AppViewModel}}" />
+                </StackPanel>
                 <ComboBox
                     Grid.Column="2"
-                    Width="200"
-                    Margin="8,0,0,24"
+                    Margin="0,0,0,24"
+                    Padding="8"
                     materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_AutomaticTranslationToText], Source={StaticResource AppViewModel}}"
                     Foreground="{DynamicResource MaterialDesignBody}"
                     ItemsSource="{Binding TranslateLanguages, Source={x:Static properties:Settings.Default}}"
                     SelectedValue="{Binding TranslateToLanguage, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
                 <ComboBox
                     Grid.Column="3"
-                    Width="200"
-                    Margin="8,0,0,24"
+                    Margin="5,0,0,24"
+                    Padding="8"
                     materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_AutomaticTranslationFromText], Source={StaticResource AppViewModel}}"
                     Foreground="{DynamicResource MaterialDesignBody}"
                     ItemsSource="{Binding TranslateLanguages, Source={x:Static properties:Settings.Default}}"
@@ -121,15 +133,9 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Margin="8,0,0,0">
-                        <TextBox
-                            materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_GoogleServiceKeyText], Source={StaticResource AppViewModel}}"
-                            Text="{Binding GoogleServiceKey, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
-                        <TextBox
-                            materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_CognitiveServiceKeyText], Source={StaticResource AppViewModel}}"
-                            Text="{Binding CognitiveServiceKey, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
-                        <TextBox
-                            materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_CognitiveServiceRegionText], Source={StaticResource AppViewModel}}"
-                            Text="{Binding CognitiveServiceRegion, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+                        <TextBox materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_GoogleServiceKeyText], Source={StaticResource AppViewModel}}" Text="{Binding GoogleServiceKey, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+                        <TextBox materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_CognitiveServiceKeyText], Source={StaticResource AppViewModel}}" Text="{Binding CognitiveServiceKey, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
+                        <TextBox materialDesign:HintAssist.HelperText="{Binding Locale[TranslateSettingsTabItem_CognitiveServiceRegionText], Source={StaticResource AppViewModel}}" Text="{Binding CognitiveServiceRegion, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
                     </StackPanel>
                 </Grid>
             </StackPanel>

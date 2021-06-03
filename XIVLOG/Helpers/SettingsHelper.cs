@@ -41,7 +41,7 @@ namespace XIVLOG.Helpers {
                 }
                 else {
                     XElement xColorElement = element.Element("Color");
-                    if (xColorElement != null) {
+                    if (xColorElement is not null) {
                         xColorElement.Value = xColor;
                     }
                     else {
@@ -49,7 +49,7 @@ namespace XIVLOG.Helpers {
                     }
 
                     XElement xDescriptionElement = element.Element("Description");
-                    if (xDescriptionElement != null) {
+                    if (xDescriptionElement is not null) {
                         xDescriptionElement.Value = xDescription;
                     }
                     else {
@@ -86,7 +86,7 @@ namespace XIVLOG.Helpers {
                 }
                 else {
                     XElement xChatCodesElement = element.Element("ChatCodes");
-                    if (xChatCodesElement != null) {
+                    if (xChatCodesElement is not null) {
                         xChatCodesElement.Value = xChatCodes;
                     }
                     else {
@@ -94,7 +94,7 @@ namespace XIVLOG.Helpers {
                     }
 
                     XElement xDescriptionElement = element.Element("RegEx");
-                    if (xDescriptionElement != null) {
+                    if (xDescriptionElement is not null) {
                         xDescriptionElement.Value = xRegEx;
                     }
                     else {

@@ -22,6 +22,10 @@ namespace XIVLOG.Utilities {
             Debug(logger, new LogItem(message, exception));
         }
 
+        public static void Debug(Logger logger, Exception exception) {
+            Debug(logger, new LogItem(exception));
+        }
+
         public static void Debug(Logger logger, LogItem logItem) {
             Log(logger, logItem);
 
@@ -33,6 +37,10 @@ namespace XIVLOG.Utilities {
 
         public static void Log(Logger logger, string message, Exception exception = null) {
             Log(logger, new LogItem(message, exception));
+        }
+
+        public static void Log(Logger logger, Exception exception) {
+            Log(logger, new LogItem(exception));
         }
 
         public static void Log(Logger logger, LogItem logItem) {

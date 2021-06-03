@@ -29,7 +29,7 @@ namespace XIVLOG {
         }
 
         private void CloseApplication() {
-            if (Application.Current.MainWindow != null) {
+            if (Application.Current.MainWindow is not null) {
                 Application.Current.MainWindow.WindowState = WindowState.Normal;
             }
 

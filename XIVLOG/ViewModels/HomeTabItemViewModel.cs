@@ -12,6 +12,7 @@ namespace XIVLOG.ViewModels {
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Text.RegularExpressions;
     using System.Windows;
     using System.Windows.Controls;
 
@@ -42,10 +43,12 @@ namespace XIVLOG.ViewModels {
                     }
 
                     TranslationResult result = Translate.GetManualResult(message, fromLanguage, toLanguage);
-                    if (result is not null) {
-                        Clipboard.SetText(result.Translated);
-                        HomeTabItem.Instance.ManualTranslate.Text = result.Translated;
+                    if (result is null) {
+                        return;
                     }
+
+                    Clipboard.SetText(result.Translated);
+                    HomeTabItem.Instance.ManualTranslate.Text = result.Translated;
                 });
         }
 
@@ -70,6 +73,10 @@ namespace XIVLOG.ViewModels {
 
             filteredChatLog.TabName.Text = header;
             filteredChatLog.RegEx.Text = regEx;
+
+            if (SharedRegEx.IsValidRegex(regEx)) {
+                filteredChatLog.CompiledRegEx = new Regex(regEx, SharedRegEx.DefaultOptions);
+            }
 
             tabItem.Content = filteredChatLog;
 

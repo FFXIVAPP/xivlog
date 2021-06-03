@@ -41,6 +41,8 @@ namespace XIVLOG.Controls {
             this.Dispose();
         }
 
+        public Regex CompiledRegEx { get; set; } = new Regex(@".+", SharedRegEx.DefaultOptions);
+
         public void Dispose() {
             EventHost.Instance.OnNewChatLogItem -= this.OnNewChatLogItem;
         }
@@ -53,31 +55,24 @@ namespace XIVLOG.Controls {
         private void OnNewChatLogItem(object? sender, MemoryHandler memoryHandler, ChatLogItem chatLogItem) {
             this.Dispatcher.Invoke(
                 () => {
+                    if (!this.ChatCodes.Items.Contains(chatLogItem.Code)) {
+                        return;
+                    }
+
                     bool regExMatched = false;
                     string xRegularExpression = this.RegEx.Text;
 
                     switch (xRegularExpression) {
                         case "*":
+                        case ".+":
                             regExMatched = true;
                             break;
                         default:
-                            try {
-                                Regex regex = new Regex(xRegularExpression);
-                                if (SharedRegEx.IsValidRegex(xRegularExpression)) {
-                                    Match match = regex.Match(chatLogItem.Message);
-                                    if (match.Success) {
-                                        regExMatched = true;
-                                    }
-                                }
-                            }
-                            catch {
-                                regExMatched = true;
-                            }
-
+                            regExMatched = this.CompiledRegEx.Match(chatLogItem.Message).Success;
                             break;
                     }
 
-                    if (regExMatched && this.ChatCodes.Items.Contains(chatLogItem.Code)) {
+                    if (regExMatched) {
                         FlowDocHelper.AppendChatLogItem(memoryHandler, chatLogItem, this.ChatLogReader._FDR);
                     }
                 });

@@ -14,6 +14,7 @@ namespace XIVLOG {
     using System.Configuration;
     using System.IO;
     using System.Linq;
+    using System.Threading;
     using System.Windows;
     using System.Xml;
     using System.Xml.Linq;

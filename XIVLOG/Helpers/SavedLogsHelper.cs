@@ -87,7 +87,7 @@ namespace XIVLOG.Helpers {
             if (AppViewModel.Instance.ChatHistory.Any()) {
                 try {
                     // clear current builders
-                    foreach ((var _, StringBuilder value) in _textLogBuilders) {
+                    foreach ((string _, StringBuilder value) in _textLogBuilders) {
                         value.Clear();
                     }
 

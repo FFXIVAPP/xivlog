@@ -37,7 +37,7 @@ namespace XIVLOG.ViewModels {
 
         private ObservableCollection<LanguageItem> _interfaceLanguages;
 
-        private Dictionary<string, string> _locale;
+        private ConcurrentDictionary<string, string> _locale;
 
         private string _logsPath;
 
@@ -151,8 +151,8 @@ namespace XIVLOG.ViewModels {
             set => this.SetProperty(ref this._interfaceLanguages, value);
         }
 
-        public Dictionary<string, string> Locale {
-            get => this._locale ??= new Dictionary<string, string>();
+        public ConcurrentDictionary<string, string> Locale {
+            get => this._locale ??= new ConcurrentDictionary<string, string>();
             set => this.SetProperty(ref this._locale, value);
         }
 

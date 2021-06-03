@@ -31,7 +31,7 @@ namespace XIVLOG.Models {
                                ? exception?.Message ?? "LogItem: Called Without Message"
                                : message;
             this.Exception = exception;
-            if (this.Exception != null) {
+            if (this.Exception is not null) {
                 this.LogLevel = LogLevel.Error;
             }
         }

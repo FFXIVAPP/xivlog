@@ -45,16 +45,16 @@
 
             <ComboBox
                 Grid.Column="0"
-                Width="120"
-                Margin="8,0,0,16"
+                MinWidth="120"
+                Margin="5,0,0,16"
                 materialDesign:HintAssist.HelperText="{Binding Locale[HomeTabItem_ManualTranslateToText], Source={StaticResource AppViewModel}}"
                 ItemsSource="{Binding TranslateLanguages, Source={x:Static properties:Settings.Default}}"
                 SelectedValue="{Binding ManualTranslateTo, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />
 
             <ComboBox
                 Grid.Column="1"
-                Width="120"
-                Margin="8,0,0,16"
+                MinWidth="120"
+                Margin="5,0,0,16"
                 materialDesign:HintAssist.HelperText="{Binding Locale[HomeTabItem_ManualTranslateFromText], Source={StaticResource AppViewModel}}"
                 ItemsSource="{Binding TranslateLanguages, Source={x:Static properties:Settings.Default}}"
                 SelectedValue="{Binding ManualTranslateFrom, Source={x:Static properties:Settings.Default}, Mode=TwoWay}" />

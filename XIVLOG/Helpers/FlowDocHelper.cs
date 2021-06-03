@@ -51,7 +51,7 @@ namespace XIVLOG.Helpers {
 
                     paragraph.Inlines.Add(line);
                     reader.Document.Blocks.Add(paragraph);
-                    if (reader.Document.Blocks.LastBlock != null) {
+                    if (reader.Document.Blocks.LastBlock is not null) {
                         reader.Document.Blocks.LastBlock.Loaded += MessageAdded;
                     }
                 });
@@ -68,7 +68,7 @@ namespace XIVLOG.Helpers {
                     Paragraph paragraph = new Paragraph();
                     paragraph.Inlines.Add(new Span(new Run(message)));
                     reader.Document.Blocks.Add(paragraph);
-                    if (reader.Document.Blocks.LastBlock != null) {
+                    if (reader.Document.Blocks.LastBlock is not null) {
                         reader.Document.Blocks.LastBlock.Loaded += MessageAdded;
                     }
                 });

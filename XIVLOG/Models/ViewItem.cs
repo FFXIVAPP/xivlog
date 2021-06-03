@@ -52,7 +52,7 @@ namespace XIVLOG.Models {
 
         private object? CreateContent() {
             object? content = Activator.CreateInstance(this._contentType);
-            if (this._dataContext != null && content is FrameworkElement element) {
+            if (this._dataContext is not null && content is FrameworkElement element) {
                 element.DataContext = this._dataContext;
             }
 

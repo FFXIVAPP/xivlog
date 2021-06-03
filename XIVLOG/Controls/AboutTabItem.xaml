@@ -43,7 +43,7 @@
                     VerticalAlignment="Center">
                     <TextBlock
                         Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-                        Text="{Binding Locale[HomeTabItem_WelcomeText], Source={StaticResource AppViewModel}}"
+                        Text="{Binding Locale[ApplicationName], Source={StaticResource AppViewModel}}"
                         TextWrapping="Wrap" />
 
                 </StackPanel>
@@ -74,7 +74,7 @@
                         Grid.Column="1"
                         Margin="16,16,16,2"
                         Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                        Text="{Binding Locale[HomeTabItem_GetInTouchText], Source={StaticResource AppViewModel}}" />
+                        Text="{Binding Locale[AboutTabItem_GetInTouchText], Source={StaticResource AppViewModel}}" />
 
                     <TextBlock
                         Grid.Row="1"
@@ -82,7 +82,7 @@
                         Margin="16,0,16,8"
                         VerticalAlignment="Center"
                         Foreground="{DynamicResource MaterialDesignBodyLight}"
-                        Text="{Binding Locale[HomeTabItem_GetInTouchExtendedText], Source={StaticResource AppViewModel}}"
+                        Text="{Binding Locale[AboutTabItem_GetInTouchExtendedText], Source={StaticResource AppViewModel}}"
                         TextWrapping="Wrap" />
 
                     <Border
@@ -152,13 +152,13 @@
                         <TextBlock
                             Margin="16,16,16,8"
                             Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                            Text="{Binding Locale[HomeTabItem_OpenSourceText], Source={StaticResource AppViewModel}}" />
+                            Text="{Binding Locale[AboutTabItem_OpenSourceText], Source={StaticResource AppViewModel}}" />
 
                         <TextBlock
                             Margin="16,0,16,8"
                             VerticalAlignment="Top"
                             Foreground="{DynamicResource MaterialDesignBodyLight}"
-                            Text="{Binding Locale[HomeTabItem_OpenSourceExtendedText], Source={StaticResource AppViewModel}}"
+                            Text="{Binding Locale[AboutTabItem_OpenSourceExtendedText], Source={StaticResource AppViewModel}}"
                             TextWrapping="Wrap" />
                     </StackPanel>
 
@@ -188,7 +188,7 @@
                                 Margin="16"
                                 VerticalAlignment="Center"
                                 Foreground="{DynamicResource MaterialDesignBodyLight}"
-                                Text="{Binding Locale[HomeTabItem_DonationText], Source={StaticResource AppViewModel}}"
+                                Text="{Binding Locale[AboutTabItem_DonationText], Source={StaticResource AppViewModel}}"
                                 TextWrapping="Wrap" />
                         </DockPanel>
                     </Border>

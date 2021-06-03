@@ -16,16 +16,15 @@ namespace XIVLOG.Utilities {
         public const RegexOptions DefaultOptions = RegexOptions.Compiled | RegexOptions.ExplicitCapture;
 
         public static bool IsValidRegex(string pattern) {
-            bool result = true;
             if (string.IsNullOrWhiteSpace(pattern)) {
                 return false;
             }
 
             try {
-                result = Regex.IsMatch(string.Empty, pattern);
+                Regex regex = new Regex(pattern, DefaultOptions);
             }
             catch (Exception) {
-                return result;
+                return false;
             }
 
             return true;

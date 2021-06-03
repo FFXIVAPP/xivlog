@@ -26,11 +26,6 @@ namespace XIVLOG.Models {
             this.Description = DEFAULT_DESCRIPTION;
         }
 
-        public bool IsSelected {
-            get => this._isSelected;
-            set => this.SetProperty(ref this._isSelected, value);
-        }
-
         public ChatCode(string code, string color, string description) {
             this.Code = code;
             this.Color = color;
@@ -47,6 +42,11 @@ namespace XIVLOG.Models {
         public string Description {
             get => this._description;
             set => this.SetProperty(ref this._description, value);
+        }
+
+        public bool IsSelected {
+            get => this._isSelected;
+            set => this.SetProperty(ref this._isSelected, value);
         }
     }
 }
