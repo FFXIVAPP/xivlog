@@ -12,10 +12,10 @@ Features:
 - automatic updates when using `XIVLOG.Launcher`
 
 ## Main Screen
-![image](https://user-images.githubusercontent.com/677341/119411531-6d081400-bc9f-11eb-8a2d-1f0f69c43cc5.png)
+![image](https://user-images.githubusercontent.com/677341/120732563-639a5b00-c49a-11eb-9384-30084c0146e9.png)
 
 ## Translation Settings
-![image](https://user-images.githubusercontent.com/677341/119411618-8dd06980-bc9f-11eb-997c-59d68e03bd68.png)
+![image](https://user-images.githubusercontent.com/677341/120732576-6c8b2c80-c49a-11eb-816f-f5dd8f908c63.png)
 
 ## ChatCode Color/Tab Creation
-![image](https://user-images.githubusercontent.com/677341/119411654-9b85ef00-bc9f-11eb-8bad-e6b0ff30785f.png)
+![image](https://user-images.githubusercontent.com/677341/120732597-72810d80-c49a-11eb-9005-63ae7a4aa4ba.png)
