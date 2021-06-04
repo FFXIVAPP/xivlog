@@ -40,8 +40,6 @@ namespace XIVLOG {
 
         private readonly ConcurrentDictionary<int, WorkerSet> _workerSets = new ConcurrentDictionary<int, WorkerSet>();
 
-        private Process[] _gameInstances;
-
         public static AppContext Instance => _instance.Value;
 
         public void Initialize() {
@@ -75,7 +73,10 @@ namespace XIVLOG {
         }
 
         private void FindGameInstances() {
-            this._gameInstances = Process.GetProcessesByName("ffxiv_dx11");
+            AppViewModel.Instance.GameInstances.Clear();
+            foreach (Process process in Process.GetProcessesByName("ffxiv_dx11")) {
+                AppViewModel.Instance.GameInstances.TryAdd(process.Id, process);
+            }
         }
 
         private void LoadChatCodes() {
@@ -156,6 +157,8 @@ namespace XIVLOG {
             if (this._workerSets.TryRemove(memoryHandler.Configuration.ProcessModel.ProcessID, out WorkerSet workerSet)) {
                 workerSet.StopMemoryWorkers();
             }
+
+            AppViewModel.Instance.GameInstances.TryRemove(memoryHandler.Configuration.ProcessModel.ProcessID, out Process process);
         }
 
         private void MemoryHandler_OnMemoryLocationsFoundEvent(object sender, ConcurrentDictionary<string, MemoryLocation> memoryLocations, long processingTime) {
@@ -195,7 +198,7 @@ namespace XIVLOG {
         }
 
         private void SetupSharlayanManager() {
-            foreach (Process process in this._gameInstances) {
+            foreach ((int _, Process process) in AppViewModel.Instance.GameInstances) {
                 SharlayanConfiguration sharlayanConfiguration = new SharlayanConfiguration {
                     ProcessModel = new ProcessModel {
                         Process = process,
