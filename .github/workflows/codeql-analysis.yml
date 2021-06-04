@@ -56,7 +56,7 @@ jobs:
         with:
           dotnet-version: "3.1.x" # SDK Version to use; x will use the latest version of the 3.1 channel
 
-      - run: dotnet add package Sharlayan
+      - run: dotnet add XIVLOG.csproj package Sharlayan
 
       # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
       # If this step fails, then you should remove it and run the build manually (see below)
