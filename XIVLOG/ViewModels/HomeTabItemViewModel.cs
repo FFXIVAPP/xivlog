@@ -47,7 +47,7 @@ namespace XIVLOG.ViewModels {
                         return;
                     }
 
-                    Clipboard.SetText(result.Translated);
+                    Clipboard.SetDataObject(result.Translated, true);
                     HomeTabItem.Instance.ManualTranslate.Text = result.Translated;
                 });
         }
